@@ -1,0 +1,74 @@
+# ~/.config/starship.toml
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+# Replace the '❯' symbol in the prompt with '➜'
+[character]
+success_symbol = '[➜](bold green)'
+error_symbol = '[➜](bold red)'
+
+# Conda configuration
+[conda]
+format = '[$symbol$environment](dimmed green) '
+symbol = '🅒 '
+ignore_base = false
+style = 'green'
+
+# Directory configuration
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+style = 'blue'
+
+# Git configuration
+[git_branch]
+symbol = '🌱 '
+truncation_length = 4
+truncation_symbol = ''
+style = 'purple'
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+style = 'red'
+
+# Time configuration
+[time]
+disabled = false
+format = '🕙 [\[ $time \]]($style) '
+time_format = '%T'
+style = 'bright-black'
+
+# Display AWS profile
+[aws]
+symbol = '☁️  '
+style = 'yellow'
+
+# Display Python version
+[python]
+symbol = '🐍 '
+python_binary = ['python', 'python3']
+style = 'yellow'
+
+# Package version
+[package]
+symbol = '📦 '
+style = 'yellow'
+
+# Command duration
+[cmd_duration]
+min_time = 2000
+format = ' ⏱️  [$duration]($style)'
+style = 'yellow'
+
+# Battery indicator
+[battery]
+full_symbol = '🔋'
+charging_symbol = '⚡️'
+discharging_symbol = '💀'
+
+[[battery.display]]
+threshold = 30
+style = 'red'
