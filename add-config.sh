@@ -6,7 +6,7 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-STOW_DIR="$HOME/.dotfiles"
+STOW_DIR="$HOME/dotfiles_stow"
 
 print_message() {
     local color=$1
