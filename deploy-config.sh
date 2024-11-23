@@ -6,7 +6,7 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-STOW_DIR="$HOME/.dotfiles"
+STOW_DIR="$HOME/dotfiles_stow"
 BACKUP_DIR="$HOME/.config-backup-$(date +%Y%m%d-%H%M%S)"
 
 print_message() {
