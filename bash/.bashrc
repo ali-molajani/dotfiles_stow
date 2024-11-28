@@ -18,3 +18,5 @@ eval "$(starship init bash)"
 alias vi='nvim'
 alias condaup='source ~/miniconda3/bin/activate'
 alias la='ls -latrh'
+# fzf complitation
+source <(fzf --bash)
