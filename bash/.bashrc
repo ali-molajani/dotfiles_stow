@@ -20,3 +20,5 @@ alias condaup='source ~/miniconda3/bin/activate'
 alias la='ls -latrh'
 # fzf complitation
 source <(fzf --bash)
+# set the manpager to nvim
+export MANPAGER="nvim +Man!"
