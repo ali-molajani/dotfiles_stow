@@ -23,3 +23,8 @@ alias la='ls -latrh'
 source <(fzf --bash)
 # set the manpager to nvim
 export MANPAGER="nvim +Man!"
+# if you are using password for ssh use below commands to prevent password for cloning
+# if [ -z "$SSH_AUTH_SOCK" ] ; then
+#    eval "$(ssh-agent -s)"
+#    ssh-add ~/.ssh/id_rsa
+# fi
