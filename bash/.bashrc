@@ -16,6 +16,7 @@ test -s ~/.alias && . ~/.alias || true
 eval "$(starship init bash)"
 # nvim alias
 alias vi='nvim'
+alias vim='NVIM_APPNAME=nvim_test nvim'
 alias lg='lazygit'
 alias condaup='source ~/miniconda3/bin/activate'
 alias la='ls -latrh'
