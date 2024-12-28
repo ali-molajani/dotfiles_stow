@@ -1,0 +1,5 @@
+window-decoration = false
+theme = tokyonight-storm
+# keybindings
+keybind = ctrl+t=new_tab
+keybind = ctrl+w=close_surface
