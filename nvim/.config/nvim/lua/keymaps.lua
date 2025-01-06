@@ -32,6 +32,7 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 vim.keymap.set('n', '<leader>e', ':Oil<CR>')
 vim.keymap.set('n', '-', '<CMD>Oil --float<CR>', { desc = 'Open parent directory' })
+vim.keymap.set('n', '<leader>nt', '<CMD>tabnew<CR>', { desc = 'Create New tab' })
 vim.keymap.set('n', '<leader>xx', '<CMD>luafile %<CR>', { desc = 'executes the luafiles inside nvim' })
 vim.keymap.set('t', '<esc><esc>', '<c-\\><c-n>', { desc = 'quit terminal mode' })
 vim.keymap.set({ 'n', 't' }, '<leader>tt', '<CMD>Floatterm<CR>', { desc = 'quick floating terminal' })
