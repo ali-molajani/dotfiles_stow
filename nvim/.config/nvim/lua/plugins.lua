@@ -415,7 +415,23 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        clangd = {},
+        clangd = {
+          cmd = { 'clangd', '--background-index', '--compile-commands-dir', vim.fn.getcwd() },
+          init_options = {
+            clangdFileStatus = true,
+            clangdSemanticHighlighting = true,
+          },
+          filetypes = { 'c', 'cpp', 'cxx', 'cc' },
+          root_dir = function()
+            vim.fn.getcwd()
+          end,
+          settings = {
+            ['clangd'] = {
+              ['compilationDatabasePath'] = 'build',
+              ['fallbackFlags'] = { '-std=c++17' },
+            },
+          },
+        },
         -- gopls = {},
         pyright = {},
         rust_analyzer = {},
