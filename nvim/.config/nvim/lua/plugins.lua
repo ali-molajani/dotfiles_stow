@@ -540,7 +540,7 @@ require('lazy').setup({
   {
     'saghen/blink.cmp',
     dependencies = 'rafamadriz/friendly-snippets',
-    version = '0.*',
+    version = '*',
     opts = {
       completion = {
         documentation = {
