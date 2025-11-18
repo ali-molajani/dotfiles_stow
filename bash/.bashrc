@@ -18,7 +18,7 @@ eval "$(starship init bash)"
 alias vi='nvim'
 alias vim='NVIM_APPNAME=nvim_test nvim'
 alias lg='lazygit'
-alias condaup='source ~/miniconda3/bin/activate'
+#alias condaup='source ~/miniconda3/bin/activate'
 alias ls='ls -l'
 alias la='ls -latrh'
 # fzf complitation
