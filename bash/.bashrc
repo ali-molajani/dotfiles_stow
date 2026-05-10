@@ -21,6 +21,7 @@ alias lg='lazygit'
 #alias condaup='source ~/miniconda3/bin/activate'
 alias ls='ls -l'
 alias la='ls -latrh'
+alias emsup='source ~/dev/emsdk/emsdk_env.sh'
 # fzf complitation
 source <(fzf --bash)
 # set the manpager to nvim
