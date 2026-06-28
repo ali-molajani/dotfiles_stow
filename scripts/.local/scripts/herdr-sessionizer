@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+selected=$(find ~/dev ~/work -mindepth 1 -maxdepth 1 -type d 2>/dev/null | fzf \
+  --prompt "❯ " \
+  --pointer "▶" \
+  --border rounded \
+  --border-label "  Projects " \
+  --border-label-pos center \
+  --layout reverse \
+  --info hidden \
+  --header "$(printf '\n  \033[38;2;94;172;211m  Select a project to open\033[0m\n')" \
+  --color "border:#5eacd3,label:#5eacd3,prompt:#5eacd3,pointer:#5eacd3" \
+  --no-preview \
+)
+
+if [[ -z "$selected" ]]; then
+  exit 0
+fi
+
+name=$(basename "$selected" | tr . _)
+
+# Smart switch: if workspace already exists, focus it
+existing=$(herdr workspace list | python3 -c "
+import sys, json
+data = json.load(sys.stdin)
+for w in data['result']['workspaces']:
+    if w['label'] == '$name':
+        print(w['workspace_id'])
+        break
+")
+
+if [[ -n "$existing" ]]; then
+  herdr workspace focus "$existing"
+  exit 0
+fi
+
+# Create workspace and extract all IDs
+read ws_id t1 p1 < <(herdr workspace create --cwd "$selected" --label "$name" --no-focus | python3 -c "
+import sys, json
+data = json.load(sys.stdin)['result']
+print(data['workspace']['workspace_id'], data['tab']['tab_id'], data['root_pane']['pane_id'])
+")
+
+# Tab 1: claude
+herdr tab rename "$t1" "claude"
+herdr pane run "$p1" "claude"
+
+# Tab 2: lazygit
+read t2 p2 < <(herdr tab create --workspace "$ws_id" --label "lazygit" --no-focus | python3 -c "
+import sys, json
+data = json.load(sys.stdin)['result']
+print(data['tab']['tab_id'], data['root_pane']['pane_id'])
+")
+herdr pane run "$p2" "lazygit"
+
+# Tab 3: shell
+herdr tab create --workspace "$ws_id" --label "shell" --no-focus
+
+# Focus workspace and first tab
+herdr workspace focus "$ws_id"
+herdr tab focus "$t1"

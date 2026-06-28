@@ -1,0 +1,53 @@
+# ~/.config/herdr/config.toml
+# Equivalent of your .tmux.conf for herdr + herdr-plus
+#
+# After editing, apply with: herdr server reload-config
+
+onboarding = false
+
+
+# ─── TERMINAL ────────────────────────────────────────────────────────────────
+# herdr inherits your $TERM and terminal colors from the outer terminal.
+# The screen-256color + Tc overrides in tmux are not needed — herdr renders
+# inside your real terminal (Ghostty, kitty, etc.) which handles true color.
+# No equivalent needed.
+
+# ─── THEME ───────────────────────────────────────────────────────────────────
+# tmux: bg=#333333 fg=#5eacd3
+# The closest built-in is tokyo-night (dark bg, blue accent).
+# Or use "terminal" to inherit your terminal's own colors.
+[theme]
+name = "gruvbox"
+
+
+# ─── KEYBINDINGS ─────────────────────────────────────────────────────────────
+[keys]
+# tmux: prefix C-a (was C-b)
+prefix = "ctrl+a"
+
+# Reload config (was: bind r source-file ~/.tmux.conf)
+# herdr reloads with prefix+Shift+R by default, but you can make it explicit:
+# (prefix+r is resize-mode by default; rebind resize if you want this slot)
+# resize_mode = ""   # uncomment to free up prefix+r
+
+# Vim-like pane focus (was: bind -r k/j/h/l select-pane -U/D/L/R)
+previous_workspace = "prefix+comma"
+next_workspace = "prefix+period"
+focus_pane_up    = "prefix+k"
+focus_pane_down  = "prefix+j"
+focus_pane_left  = "prefix+h"
+focus_pane_right = "prefix+l"
+
+# ─── CUSTOM COMMAND KEYBINDINGS ──────────────────────────────────────────────
+
+[[keys.command]]
+key = "prefix+a"
+type = "pane"
+command = "claude"
+description = "open claude"
+
+[[keys.command]]
+key = "prefix+f"
+type = "pane"
+command = "~/.local/scripts/herdr-sessionizer"
+description = "sessionizer"
