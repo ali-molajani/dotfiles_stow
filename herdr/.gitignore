@@ -1,0 +1,4 @@
+# dotfiles/hedr/.gitignore
+**
+!.gitignore
+!**/*.toml

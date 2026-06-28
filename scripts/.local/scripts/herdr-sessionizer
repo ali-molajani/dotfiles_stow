@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+color="#C4871D"
 selected=$(find ~/dev ~/work -mindepth 1 -maxdepth 1 -type d 2>/dev/null | fzf \
   --prompt "❯ " \
   --pointer "▶" \
@@ -9,7 +10,7 @@ selected=$(find ~/dev ~/work -mindepth 1 -maxdepth 1 -type d 2>/dev/null | fzf \
   --layout reverse \
   --info hidden \
   --header "$(printf '\n  \033[38;2;94;172;211m  Select a project to open\033[0m\n')" \
-  --color "border:#5eacd3,label:#5eacd3,prompt:#5eacd3,pointer:#5eacd3" \
+  --color "border:$color,label:$color,prompt:$color,pointer:$color" \
   --no-preview \
 )
 
